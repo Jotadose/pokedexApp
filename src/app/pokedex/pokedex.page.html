@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Pokedex</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Ingrese el ID del Pokémon</ion-label>
+    <ion-input type="number" [(ngModel)]="pokemonId"></ion-input>
+  </ion-item>
+  <ion-button expand="full" (click)="searchPokemon()">Buscar</ion-button>
+
+  <div *ngIf="pokemon">
+    <h2>{{ pokemon.name | uppercase }}</h2>
+    <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}">
+    <p><strong>Altura:</strong> {{ pokemon.height }}</p>
+    <p><strong>Peso:</strong> {{ pokemon.weight }}</p>
+  </div>
+
+  <div *ngIf="!pokemon && pokemonId">
+    <p>Pokémon no encontrado. Inténtalo de nuevo.</p>
+  </div>
+</ion-content>
